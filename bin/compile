@@ -1,9 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 BUILD_DIR=$1
-CACHE_DIR=$2
-ENV_DIR=$3
-BP_DIR=`cd $(dirname $0); cd ..; pwd`
 
 cd $BUILD_DIR
 
@@ -14,6 +11,25 @@ fi
 
 echo '{ "root": "storybook-static/" }' > static.json
 
-export PATH="$BUILD_DIR/.heroku/node/bin:$BUILD_DIR/.heroku/yarn/bin":$PATH
-
 npm run build-storybook
+
+
+# #!/usr/bin/env bash
+
+# BUILD_DIR=$1
+# CACHE_DIR=$2
+# ENV_DIR=$3
+# BP_DIR=`cd $(dirname $0); cd ..; pwd`
+
+# cd $BUILD_DIR
+
+# if [ -f "static.json" ]
+# then
+#   echo '       Overwriting existing `static.json`'
+# fi
+
+# echo '{ "root": "storybook-static/" }' > static.json
+
+# export PATH="$BUILD_DIR/.heroku/node/bin:$BUILD_DIR/.heroku/yarn/bin":$PATH
+
+# npm run build-storybook
